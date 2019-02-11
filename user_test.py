@@ -1,5 +1,5 @@
 import unittest # Importing the unittest module
-from contact import User # Importing the user class
+from user import User # Importing the user class
 
 class TestUser(unittest.TestCase):
 
@@ -9,7 +9,7 @@ class TestUser(unittest.TestCase):
     Args:
         unittest.TestCase: TestCase class that helps in creating test cases
     '''
-     def setUp(self):
+    def setUp(self):
         '''
         Set up method to run before each test cases.
         '''
@@ -28,5 +28,43 @@ class TestUser(unittest.TestCase):
 
 
 
-if __name__ == '__main__':
+    def test_save_user(self):
+        '''
+        test_save_user test case to test if the user object is saved into
+         the user list
+        '''
+        self.new_user.save_user() # saving the new user
+        self.assertEqual(len(User.user_list),1)
+
+        # Items up here...
+
+    def test_save_multiple_user(self):
+            '''
+            test_save_multiple_user to check if we can save multiple user
+            objects to our user_list
+            '''
+            self.new_user.save_user()
+            test_user = User("Jane","Bosco","janebosco@gmail.com","test567") # new user
+            test_user.save_user()
+            self.assertEqual(len(User.user_list),2)
+
+# setup and class creation up here
+    def tearDown(self):
+            '''
+            tearDown method that does clean up after each test case has run.
+            '''
+            User.user_list = []
+
+# other test cases here
+    def test_save_multiple_user(self):
+            '''
+            test_save_multiple_user to check if we can save multiple user
+            objects to our user_list
+            '''
+            self.new_user.save_user()
+            test_user = User("Jane","Bosco","janebosco@gmail.com","test567") # new user
+            test_user.save_user()
+            self.assertEqual(len(User.user_list),2)
+
+if __name__ ==  '__main__':
     unittest.main()
