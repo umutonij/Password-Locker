@@ -33,30 +33,30 @@ class Credential:
         Credential.credential_list.remove(self)
 
     @classmethod
-    def find_by_password(cls,password):
+    def find_by_site(cls,site):
         '''
-        Method that takes in a password and returns a credential that matches that password.
+        Method that takes in a site_name and returns a credential that matches that site_name.
 
         Args:
-            password: Password to search for
+            site_name: site_name to search for
         Returns :
-            Credential of person that matches the password.
+            Credential of person that matches the site_name.
         '''
 
         for credential in cls.credential_list:
-            if credential.password == password:
+            if credential.site_name == site:
                 return credential
     @classmethod
-    def credential_exist(cls,password):
+    def credential_exist(cls,site):
         '''
         Method that checks if a credential exists from the credential list.
         Args:
-            password: Password to search if it exists
+            site: site name to search if it exists
         Returns :
             Boolean: True or false depending if the credential exists
         '''
         for credential in cls.credential_list:
-            if credential.password == password:
+            if credential.site_name == site:
                     return True
 
         return False  
