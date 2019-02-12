@@ -44,7 +44,7 @@ class TestUser(unittest.TestCase):
             objects to our user_list
             '''
             self.new_user.save_user()
-            test_user = User("Jane","Bosco","janebosco@gmail.com","test567") # new user
+            test_user = User("Jane","Bosco","janebosco@gmail.com","test123") # new user
             test_user.save_user()
             self.assertEqual(len(User.user_list),2)
 
@@ -62,7 +62,7 @@ class TestUser(unittest.TestCase):
             objects to our user_list
             '''
             self.new_user.save_user()
-            test_user = User("Jane","Bosco","janebosco@gmail.com","test567") # new user
+            test_user = User("Jane","Bosco","janebosco@gmail.com","test123") # new user
             test_user.save_user()
             self.assertEqual(len(User.user_list),2)
             # More tests above
@@ -71,7 +71,7 @@ class TestUser(unittest.TestCase):
             test_delete_user to test if we can remove a user from our user list
             '''
             self.new_user.save_user()
-            test_user = User("Jane","Bosco","janebosco@gmail.com","test567") # new user
+            test_user = User("Jane","Bosco","janebosco@gmail.com","test123") # new user
             test_user.save_user()
 
             self.new_user.delete_user()# Deleting a user object
@@ -83,10 +83,10 @@ class TestUser(unittest.TestCase):
         '''
 
         self.new_user.save_user()
-        test_user = User("Jane","Bosco","janebosco@gmail.com","test567") # new user
+        test_user = User("Jane","Bosco","janebosco@gmail.com","test123") # new user
         test_user.save_user()
 
-        found_user = User.find_by_password("test567")
+        found_user = User.find_by_password("test123")
 
         self.assertEqual(found_user.email,test_user.email)
 
@@ -96,10 +96,10 @@ class TestUser(unittest.TestCase):
         '''
 
         self.new_user.save_user()
-        test_user = User("Jane","Bosco","janebosco@gmail.com","test567") # new user
+        test_user = User("Jane","Bosco","janebosco@gmail.com","test123") # new user
         test_user.save_user()
 
-        user_exists = User.user_exist("test567")
+        user_exists = User.user_exist("test123")
 
         self.assertTrue(user_exists)
 
