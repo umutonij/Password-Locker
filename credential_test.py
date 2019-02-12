@@ -13,7 +13,7 @@ class TestCredential(unittest.TestCase):
         '''
         Set up method to run before each test cases.
         '''
-        self.new_credential = Credential("Uwizeye","Clementine","uwiclemy@gmail.com","test489") # create credential object
+        self.new_credential = Credential("Umutoni","Instagram","umutonij","test123") # create credential object
 
 
     def test_init(self):
@@ -21,10 +21,10 @@ class TestCredential(unittest.TestCase):
         test_init test case to test if the object is initialized properly
         '''
 
-        self.assertEqual(self.new_credential.first_name,"Uwizeye")
-        self.assertEqual(self.new_credential.last_name,"Clementine")
-        self.assertEqual(self.new_credential.email,"uwiclemy@gmail.com")
-        self.assertEqual(self.new_credential.password,"test489")
+        self.assertEqual(self.new_credential.user_name,"Umutoni")
+        self.assertEqual(self.new_credential.site_name,"Instagram")
+        self.assertEqual(self.new_credential.account_name,"umutonij")
+        self.assertEqual(self.new_credential.password,"test123")
 
 
 
@@ -44,7 +44,7 @@ class TestCredential(unittest.TestCase):
             objects to our credential_list
             '''
             self.new_credential.save_credential()
-            test_credential = Credential("Muhoza","Gaju","muhozagaju@gmail.com","test185") # new credential
+            test_credential = Credential("Jacky","Twitter","umutonij","test123") # new credential
             test_credential.save_credential()
             self.assertEqual(len(Credential.credential_list),2)
 
@@ -62,7 +62,7 @@ class TestCredential(unittest.TestCase):
             objects to our credential_list
             '''
             self.new_credential.save_credential()
-            test_credential = Credential("Muhoza","Gaju","muhozagaju@gmail.com","test185") # new credential
+            test_credential = Credential("Jacky","Twitter","umutonij","test185") # new credential
             test_credential.save_credential()
             self.assertEqual(len(Credential.credential_list),2)
             # More tests above
@@ -77,18 +77,18 @@ class TestCredential(unittest.TestCase):
             self.new_credential.delete_credential()# Deleting a credential object
             self.assertEqual(len(Credential.credential_list),1)
 
-    def test_find_credential_by_password(self):
+    def test_find_credential_by_site(self):
         '''
-        test to check if we can find a credential by password and display information
+        test to check if we can find a credential by site and display information
         '''
 
         self.new_credential.save_credential()
-        test_credential = Credential("Muhoza","Gaju","muhozagaju@gmail.com","test185") # new credential
+        test_credential = Credential("Jacky","Twitter","umutonij","test123") # new credential
         test_credential.save_credential()
 
-        found_credential = Credential.find_by_password("test185")
+        found_credential = Credential.find_by_site("Twitter")
 
-        self.assertEqual(found_credential.email,test_credential.email)
+        self.assertEqual(found_credential.password,test_credential.password)
 
     def test_credential_exists(self):
         '''
@@ -96,14 +96,14 @@ class TestCredential(unittest.TestCase):
         '''
 
         self.new_credential.save_credential()
-        test_credential = Credential("Muhoza","Gaju","muhozagaju@gmail.com","test185") # new credential
+        test_credential = Credential("Jacky","Gmail","umutonij","test456") # new credential
         test_credential.save_credential()
 
-        credential_exists = Credential.credential_exist("test185")
+        credential_exists = Credential.credential_exist("Gmail")
 
         self.assertTrue(credential_exists)
 
-    def test_display_all_credentialS(self):
+    def test_display_all_credentials(self):
         '''
         method that returns a list of all credentialS saved
         '''
