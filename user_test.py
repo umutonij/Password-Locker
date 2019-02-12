@@ -13,7 +13,7 @@ class TestUser(unittest.TestCase):
         '''
         Set up method to run before each test cases.
         '''
-        self.new_user = User("Umutoni","Jacqueline","jacquelineumutoni13@gmail.com","test123") # create user object
+        self.new_user = User("Umutoni","Jacqueline","test123") # create user object
 
 
     def test_init(self):
@@ -23,7 +23,6 @@ class TestUser(unittest.TestCase):
 
         self.assertEqual(self.new_user.first_name,"Umutoni")
         self.assertEqual(self.new_user.last_name,"Jacqueline")
-        self.assertEqual(self.new_user.email,"jacquelineumutoni13@gmail.com")
         self.assertEqual(self.new_user.password,"test123")
 
 
@@ -44,7 +43,7 @@ class TestUser(unittest.TestCase):
             objects to our user_list
             '''
             self.new_user.save_user()
-            test_user = User("Jane","Bosco","janebosco@gmail.com","test123") # new user
+            test_user = User("Jane","Bosco","test123") # new user
             test_user.save_user()
             self.assertEqual(len(User.user_list),2)
 
@@ -62,7 +61,7 @@ class TestUser(unittest.TestCase):
             objects to our user_list
             '''
             self.new_user.save_user()
-            test_user = User("Jane","Bosco","janebosco@gmail.com","test123") # new user
+            test_user = User("Jane","Bosco","test123") # new user
             test_user.save_user()
             self.assertEqual(len(User.user_list),2)
             # More tests above
@@ -71,7 +70,7 @@ class TestUser(unittest.TestCase):
             test_delete_user to test if we can remove a user from our user list
             '''
             self.new_user.save_user()
-            test_user = User("Jane","Bosco","janebosco@gmail.com","test123") # new user
+            test_user = User("Jane","Bosco","test123") # new user
             test_user.save_user()
 
             self.new_user.delete_user()# Deleting a user object
@@ -83,12 +82,12 @@ class TestUser(unittest.TestCase):
         '''
 
         self.new_user.save_user()
-        test_user = User("Jane","Bosco","janebosco@gmail.com","test123") # new user
+        test_user = User("Jane","Bosco","test123") # new user
         test_user.save_user()
 
         found_user = User.find_by_password("test123")
 
-        self.assertEqual(found_user.email,test_user.email)
+        self.assertEqual(found_user.password,test_user.password)
 
     def test_user_exists(self):
         '''
@@ -96,7 +95,7 @@ class TestUser(unittest.TestCase):
         '''
 
         self.new_user.save_user()
-        test_user = User("Jane","Bosco","janebosco@gmail.com","test123") # new user
+        test_user = User("Jane","Bosco","test123") # new user
         test_user.save_user()
 
         user_exists = User.user_exist("test123")
