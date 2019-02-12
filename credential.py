@@ -6,13 +6,13 @@ class Credential:
 
     credential_list = [] # Empty credential list
 
-    def __init__(self,first_name,last_name,email,password):
+    def __init__(self,user_name,site_name,account_name,password):
 
       # docstring removed for simplicity
 
-        self.first_name = first_name
-        self.last_name = last_name
-        self.email = email
+        self.user_name = user_name
+        self.site_name = site_name
+        self.account_name = account_name
         self.password = password
         credential_list = [] # Empty credential list
  # Init method up here
