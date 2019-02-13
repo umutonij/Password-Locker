@@ -90,7 +90,7 @@ def main():
     while True:
                     print('')
                     print("-"*60)
-                    print("Use these short codes : \n ca-Create an Account \n li-Log In \n ex-exit the user list  \n dc - display users \n dl - delete created account")
+                    print("Use these short codes : \n ca-Create an Account \n li-Log In \n ex-exit the user list  \n dc - display users \n del - delete created account")
 
                     short_code = input("Enter a choice").lower()
 
@@ -110,7 +110,7 @@ def main():
 
                             save_users(create_user(f_name,l_name,password)) # create and save new contact.
                             print ('\n')
-                            print(f"New Account Created for: {f_name} {l_name} created")
+                            print(f"New Account Created for: {f_name} {l_name} {password} created")
                             print ('\n')
 
                     elif short_code == 'dc':
