@@ -1,69 +1,67 @@
 class Credential:
+    '''
+    class that generates new instance for credentials
+    '''
+    credential_list=[]
+    def __init__(self,account_name,password):
 
-    """
-    Class that generates new instances of credential.
-    """
+        '''
+        __init__ method that helps us define properties for our objects.
 
-    credential_list = [] # Empty credential list
-
-    def __init__(self,user_name,site_name,account_name,password):
-
-      # docstring removed for simplicity
-
-        self.user_name = user_name
-        self.site_name = site_name
+        Args:
+            account_name: New credential account name.
+            password : New credential password.
+        '''
         self.account_name = account_name
         self.password = password
-        credential_list = [] # Empty credential list
- # Init method up here
+
+    credential_list=[]
     def save_credential(self):
-
+        
         '''
-        save_credential method saves user objects into credential_list
+        save_credential method saves credential object into credential_list
         '''
+        Credential.credential_list.append(self)  
 
-        Credential.credential_list.append(self)
-      
     def delete_credential(self):
-
         '''
-        delete_credential method deletes a saved user from the credential_list
+        delete_credential method deletes a saved credential from the credential_list
         '''
 
         Credential.credential_list.remove(self)
 
     @classmethod
-    def find_by_site(cls,site):
+    def find_by_name(cls,name):
         '''
-        Method that takes in a site_name and returns a credential that matches that site_name.
+         Method that takes in a number and returns a contact that matches that number.
 
         Args:
-            site_name: site_name to search for
+            number:  password to search for
         Returns :
-            Credential of person that matches the site_name.
-        '''
+            Credential of account that matches the number.
+        '''    
 
         for credential in cls.credential_list:
-            if credential.site_name == site:
+            if credential.account_name == name:
                 return credential
-    @classmethod
-    def credential_exist(cls,site):
-        '''
-        Method that checks if a credential exists from the credential list.
-        Args:
-            site: site name to search if it exists
-        Returns :
-            Boolean: True or false depending if the credential exists
-        '''
-        for credential in cls.credential_list:
-            if credential.site_name == site:
-                    return True
-
-        return False  
-
     @classmethod
     def display_credentials(cls):
         '''
         method that returns the credential list
         '''
         return cls.credential_list
+
+    @classmethod
+    def credential_exist(cls,name):
+        '''
+        Method that checks if a credential exists from the credential list.
+        Args:
+            account_name: accopunt name to search if it exists
+        Returns :
+        Boolean: True or false depending if the credential exists
+        '''
+        for credential in cls.credential_list:
+            if credential.account_name == name:
+                    return True
+
+        return False  
